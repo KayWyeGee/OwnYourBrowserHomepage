@@ -8,7 +8,7 @@
     
     <style>
         :root {
-            --color-bg-primary: #f5f5f7;
+            --color-bg-primary: #f0efef;
             --color-bg-secondary: #ffffff;
             --color-text-primary: #333;
             --color-text-secondary: #555;
@@ -20,7 +20,7 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --color-bg-primary: #1c1c1e;
+                --color-bg-primary: #1a1a28;
                 --color-bg-secondary: #2c2c2e;
                 --color-text-primary: #f2f2f7;
                 --color-text-secondary: #a9a9b0;
@@ -29,32 +29,23 @@
                 --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.2);
                 --shadow-focus: 0 6px 16px rgba(0, 0, 0, 0.25);
             }
-
-            .icon-favicon[alt="GitHub"] {
-                filter: invert(1);
-            }
         }
 
-        /* 기본 스타일 */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-bg-primary);
             margin: 0;
-            padding: 40px;
+            padding: 24px;
             display: flex;
             min-height: 100vh;
             box-sizing: border-box;
             transition: background-color 0.3s ease;
         }
 
-        /* [수정됨] 
-           text-align: center; 제거 (h1 왼쪽 정렬을 위해) 
-        */
         .container {
             max-width: 800px;
             width: 100%;
             margin: 0 auto;
-            /* text-align: center; <- 이 속성 제거 */
         }
 
         h1 {
@@ -100,20 +91,13 @@
             color: var(--color-text-placeholder);
         }
 
-        /* [수정됨] 그리드 레이아웃 변경 */
         .grid-container {
             display: grid;
-            /* [수정] 400px 기준 4개가 들어가도록 아이템 너비를 88px로 고정
-              (auto-fill은 아이템이 채워질 수 있는 만큼 열을 만듭니다)
-            */
-            grid-template-columns: repeat(auto-fill, 65px);
-            
-            /* [수정] 400px 기준 4개가 들어가도록 간격 15px로 수정 */
-            gap: 20px; 
-        
+            grid-template-columns: repeat(auto-fill, 70px);
+            gap: 24px;
+
         }
 
-        /* [수정됨] */
         .grid-item {
             display: flex;
             flex-direction: column;
@@ -189,15 +173,14 @@
                 <span class="site-title">집현캠퍼스</span>
             </a>
 
-            <a href="https://sjpt.sejong.ac.kr/" class="grid-item">
+            <a href="https://ecampus.sejong.ac.kr/" class="grid-item">
                 <div class="icon-background">
-                    <img src="https://www.sejong.ac.kr/_res/sejong/kor/img/intro/img-ui-logo.png" alt="세종대학교 포털" class="icon-favicon">
+                    <img src="https://www.sejong.ac.kr/_res/sejong/kor/img/intro/img-ui-logo.png" alt="집현캠퍼스" class="icon-favicon">
                 </div>
-                <span class="site-title">세종대학교 포털</span>
+                <span class="site-title">집현캠퍼스</span>
             </a>
 
         </div>
-
         <h2>Search</h2>
         <form id="search-form">
             <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
