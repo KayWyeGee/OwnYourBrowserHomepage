@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>새로운 탭</title>
+    
+    <style>
+        :root {
+            --color-bg-primary: #f5f5f7;
+            --color-bg-secondary: #ffffff;
+            --color-text-primary: #333;
+            --color-text-secondary: #555;
+            --color-text-placeholder: #aaa;
+            --color-icon: #888;
+            --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-focus: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg-primary: #1c1c1e;
+                --color-bg-secondary: #2c2c2e;
+                --color-text-primary: #f2f2f7;
+                --color-text-secondary: #a9a9b0;
+                --color-text-placeholder: #6e6e73;
+                --color-icon: #8d8d93;
+                --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.2);
+                --shadow-focus: 0 6px 16px rgba(0, 0, 0, 0.25);
+            }
+
+            .icon-favicon[alt="GitHub"] {
+                filter: invert(1);
+            }
+        }
+
+        /* 기본 스타일 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-bg-primary);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            min-height: 100vh;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        /* [수정됨] 
+           text-align: center; 제거 (h1 왼쪽 정렬을 위해) 
+        */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            /* text-align: center; <- 이 속성 제거 */
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 30px;
+        }
+
+        #search-form {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: var(--color-icon);
+        }
+
+        #search-bar {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            font-size: 17px;
+            border: none;
+            border-radius: 12px;
+            background-color: var(--color-bg-secondary);
+            box-shadow: var(--shadow-default);
+            color: var(--color-text-primary);
+            outline: none;
+            transition: box-shadow 0.2s ease, background-color 0.3s ease;
+        }
+
+        #search-bar:focus {
+            box-shadow: var(--shadow-focus);
+        }
+
+        #search-bar::placeholder {
+            color: var(--color-text-placeholder);
+        }
+
+        /* [수정됨] 그리드 레이아웃 변경 */
+        .grid-container {
+            display: grid;
+            /* [수정] 400px 기준 4개가 들어가도록 아이템 너비를 88px로 고정
+              (auto-fill은 아이템이 채워질 수 있는 만큼 열을 만듭니다)
+            */
+            grid-template-columns: repeat(auto-fill, 65px);
+            
+            /* [수정] 400px 기준 4개가 들어가도록 간격 15px로 수정 */
+            gap: 20px; 
+        
+        }
+
+        /* [수정됨] */
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: transform 0.2s ease;
+            text-align: center; 
+        }
+
+        .grid-item:hover {
+            transform: scale(1.03);
+        }
+
+        .icon-background {
+            width: 68px;
+            height: 68px;
+            background-color: var(--color-bg-secondary);
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-default);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .icon-favicon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+        
+        .icon-letter {
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .site-title {
+            font-size: 14px;
+            font-weight: 500;
+            word-break: keep-all;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Shortcuts</h2>
+
+        <div class="grid-container">
+            
+            <a href="https://www.naver.com" class="grid-item">
+                <div class="icon-background">
+                    <img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://naver.com&size=256" alt="네이버" class="icon-favicon">
+                </div>
+                <span class="site-title">네이버</span>
+            </a>
+
+            <a href="https://www.youtube.com" class="grid-item">
+                <div class="icon-background">
+                    <img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://youtube.com&size=256" alt="유튜브" class="icon-favicon">
+                </div>
+                <span class="site-title">YouTube</span>
+            </a>
+
+            <a href="https://ecampus.sejong.ac.kr/" class="grid-item">
+                <div class="icon-background">
+                    <img src="https://www.sejong.ac.kr/_res/sejong/kor/img/intro/img-ui-logo.png" alt="집현캠퍼스" class="icon-favicon">
+                </div>
+                <span class="site-title">집현캠퍼스</span>
+            </a>
+
+            <a href="https://sjpt.sejong.ac.kr/" class="grid-item">
+                <div class="icon-background">
+                    <img src="https://www.sejong.ac.kr/_res/sejong/kor/img/intro/img-ui-logo.png" alt="세종대학교 포털" class="icon-favicon">
+                </div>
+                <span class="site-title">세종대학교 포털</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const searchForm = document.getElementById('search-form');
+            const searchBar = document.getElementById('search-bar');
+
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                const query = searchBar.value.trim();
+
+                if (query === '') {
+                    return;
+                }
+
+                let url;
+
+                if (query.startsWith('http://') || query.startsWith('https://')) {
+                    url = query;
+                } 
+                else if (query.includes('.') && !query.includes(' ')) {
+                    url = 'https://' + query;
+                } 
+                else {
+                    url = 'https://search.naver.com/search.naver?query=' + encodeURIComponent(query);
+                }
+                
+                window.location.href = url;
+            });
+        });
+    </script>
+
+</body>
+</html>
